@@ -1,7 +1,9 @@
 package programs;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -193,6 +195,129 @@ public class StringPrograms {
 		 System.out.println(c);
 		 
 	 }
+	 
+	 public static void duplicateWordInString()
+	 {
+		 
+		 String s = "Hey java is java best lang is java";
+		 	String [] strArray =s.split(" ");
+		 Map<String,Integer> map = new HashMap<>();
+		 
+		 for(String words : strArray) {
+			 
+			 	Integer count = map.get(words);
+			 	if (count == null)
+			 	{
+			 		map.put(words, 1);
+			 	}
+			 	else 
+			 	{
+			 		map.put(words, ++count);
+			 	}
+		 }
+			// 	System.out.println(map);
+			 	Set<Entry<String, Integer>> entrySet = 	map.entrySet();
+				{
+					System.out.println("Words and count");
+					for (Entry<String,Integer> entry :entrySet)
+			 		{
+			 		if(entry.getValue()>1)
+			 		{
+			 		System.out.println(entry.getKey()+ " "+entry.getValue());
+			 		}
+			 		}
+			 	
+			 	}
+		 
+		/*
+		 * Set<String> wordsInString = map.keySet(); { for (String word: wordsInString)
+		 * { if(map.get(word)>1) { System.out.println(word +" "+map.get(word));
+		 * 
+		 * } }
+		 * 
+		 * }
+		 */
+		 
+	 }
+	 public static boolean primeNumber(int num)
+	 {
+		 if(num<=1)
+		 {
+			 return false;
+		 }
+		 for (int i=2;i<num;i++)
+		 {
+			 if(num%i == 0)
+			 {
+				 return false;
+			 }
+		 }
+		return true;
+			 
+		 }
+			
+	 
+	 public static void palindromeNumber()
+	 {
+		 int num = 151;
+		 int num1 = num;
+		 int rev=0;
+		 
+		 while(num!= 0)
+		 {
+		 rev = rev*10+num%10;
+		 num = num/10;
+		 }
+		 System.out.println(rev);
+		 if(num1 == rev)
+		 {
+			 System.out.println("Is palindrome");
+		 }
+		 else
+		 {
+			 System.out.println("Not palindrome");
+		 }
+	 }
+	 public static void factorial()
+	 {
+		 	int numb = 10;
+		 	int fact = 1;
+		 	for(int i =1; i<=numb; i++)
+		 	{
+		 		fact = fact * i;
+		 	}
+		 	System.out.println(fact);
+			 
+	 }
+	public static int resursiveFactorial(int numb)
+	{
+		
+		if(numb==0)
+		return 1;
+		else 
+			return (numb * resursiveFactorial(numb-1));
+	}
+	
+	public static void iteratingArraylist()
+	{
+		ArrayList<String> tvShows = new ArrayList<>();
+		tvShows.add("Shaktimaan");
+		tvShows.add("PrisonBreak");
+		tvShows.add("JuniorG");
+		tvShows.add("Ramayan");
+		
+		System.out.println("****with iterator***");
+		Iterator<String> it =tvShows.iterator();
+		while(it.hasNext())
+		{
+			String shows = it.next();
+			System.out.println(shows);
+		}
+		System.out.println("****with for each lambda***");
+		tvShows.forEach(shows -> {
+			System.out.println(shows);
+		});
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -202,7 +327,17 @@ public class StringPrograms {
 		//missingNumberInArray();
 		//duplicateElementInArray();
 	//	smallestLargestValueInArray();
-		stringManipulation();
+		//stringManipulation();
+		//duplicateWordInString();
+		//System.out.println(primeNumber(2));
+		//System.out.println(primeNumber(1));
+		//System.out.println(primeNumber(3));
+		//System.out.println(primeNumber(4));
+		//System.out.println(primeNumber(11));
+		//palindromeNumber();
+		//factorial();
+		//System.out.println(resursiveFactorial(4));
+		iteratingArraylist();
 	}
 
 }
